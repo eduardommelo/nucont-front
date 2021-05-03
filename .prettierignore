@@ -1,0 +1,8 @@
+/node_modules/
+/e2e/
+package-lock.json
+parseJson.js
+angular.json
+.editorconfig
+.browserslistrc
+karma.conf.js

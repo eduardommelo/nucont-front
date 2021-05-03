@@ -1,0 +1,56 @@
+<div class="container-fluid margin-top-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="title-h1">Linguagens de programação</h1>
+            </div>
+            <div class="row area-form">
+                <div class="col-6 col-md-2 col-sm-2">
+                    <select (change)="updateFilter($event, 'year')" class="form-select year-form" aria-label="Default select example">
+                        <option value="{{ options }}" *ngFor="let options of listYears" [attr.selected]="options === '2020' ? true : null">
+                            {{ options }}
+                        </option>
+                    </select>
+                </div>
+                <div class="col-6 col-md-6 col-sm-6 span-form">
+                    <span>Filtrar por linguagem de programação: </span>
+                    <select (change)="updateFilter($event, 'lang')" class="form-select" aria-label="Default select example">
+                        <option *ngFor="let langs of listLangs" value="{{ langs }}" [attr.selected]="langs === 'JavaScript' ? true : null">
+                            {{ langs }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <mat-tab-group color="primary" contrast="primary">
+                <mat-tab label="Indicador">
+                    <div id="insights"></div>
+                </mat-tab>
+                <mat-tab label="Tabela">
+                    <div class="col-12 table-langs-isight">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="title-table title-table">Data</th>
+                                    <th class="title-table table-border-left title-table">
+                                        {{ tableOptions.langs }}
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tr *ngFor="let monthsTable of tableOptions.values">
+                                <th>
+                                    {{ monthsTable.month }}
+                                </th>
+                                <th>
+                                    {{ monthsTable.value }}
+                                </th>
+                            </tr>
+                        </table>
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>
